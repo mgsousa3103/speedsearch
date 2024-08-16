@@ -1,6 +1,0 @@
-name = "speedsearch"
-compatibility_date = "2024-08-15"
-
-[vars]
-UPSTASH_REDIS_REST_URL = https://sacred-cobra-49831.upstash.io
-UPSTASH_REDIS_REST_TOKEN = AcKnAAIjcDE5NWY4YjE5NTgzOTI0NjdhYWNiZTIzMzJiOWE0MzI2ZHAxMA

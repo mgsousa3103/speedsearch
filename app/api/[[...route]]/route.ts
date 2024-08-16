@@ -1,6 +1,7 @@
-import { Redis } from "@upstash/redis"
+import { Redis } from "@upstash/redis/cloudflare"
 import { Hono } from "hono"
 import { env } from "hono/adapter"
+import { cors } from "hono/cors"
 import { handle } from "hono/vercel"
 
 export const runtime = "edge"
@@ -11,6 +12,8 @@ type EnvConfig = {
     UPSTASH_REDIS_REST_TOKEN: string
     UPSTASH_REDIS_REST_URL: string
 }
+
+app.use('/*', cors())
 
 app.get("/search", async (ctx) => {
     try {
@@ -28,7 +31,7 @@ app.get("/search", async (ctx) => {
         const query = ctx.req.query("q")?.toUpperCase()
 
         if (!query) {
-            return ctx.json({ message: "Inavlid search query" }, { status: 400 })
+            return ctx.json({ message: "Invalid search query" }, { status: 400 })
         }
 
         const res = []
